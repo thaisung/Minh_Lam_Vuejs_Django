@@ -9,10 +9,13 @@
         </div>
         <foo-ter class="fixed w-full bottom-0 z-50" />
         <!-- Nhap ten PLL -->
-        <div v-if="counter.Show_Table_Login==1&&counter.Show_bang_DT==2" class="flex gap-3 fixed inset-0 mx-auto my-auto rounded text-white text-[18px] font-bold justify-center items-center w-[500px] h-[150px] flex-col bg-gradient-to-b from-sky-500 to-violet-600 px-5 py-5">
+        <div v-if="counter.Show_Table_Login==1&&counter.Show_bang_DT==2" class="flex  fixed inset-0 mx-auto my-auto rounded text-white text-[18px] font-bold justify-center items-center w-[500px] h-[150px] flex-col bg-gradient-to-b from-sky-500 to-violet-600 px-5 py-5">
+          <div class="flex flex-col justify-center  items-center relative w-full h-full gap-3">
             <h1>Nhập tên Danh sách Phát</h1>
             <input type="text" v-model="counter.name_PLL" class="flex justify-center items-center rounded text-gray-800 outline-none text-[13px] py-2 text-center w-[450px]" />
             <button v-on:click="set_play_listt();counter.Show_bang_DT=1" class="bg-sky-600 px-3 py-1 rounded text-[15px]">OK</button>
+          </div>
+          <font-awesome-icon icon="fa-solid fa-circle-xmark" v-on:click="counter.Show_bang_DT=1" class=" text-[19px] w-[20px] h-[20px] absolute top-2 right-2 cursor-pointer" />
         </div>
         <!-- Dang nhap , dangki -->
         <div v-if="counter.Show_Table_Login==0" class="bg-zinc-900 fixed z-50 inset-0 flex flex-col items-center justify-center">
