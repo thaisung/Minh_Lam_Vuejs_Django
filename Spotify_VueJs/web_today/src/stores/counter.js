@@ -33,6 +33,9 @@ export const useCounterStore = defineStore('counter', {
       do_dai: '',
       loop_ms: false,
       dao_ms: false,
+      Show_bang_DKTC: { tb: 0, tc: 0 },
+      Show_bang_DNTC: 1, name_PLL: 'Lam',
+      Show_bang_DT: 1,
     }
   },
 
@@ -66,8 +69,8 @@ export const useCounterStore = defineStore('counter', {
       this.Delete_song_love = await this.Delete_song_love.data;
       this.get_song_love();
     },
-    async set_play_list(aa) {
-      this.Set_play_list = await axios({ method: 'post', data: { 'name': aa, 'name_user': this.Data_User.username }, url: this.domain_Backend + '/set_play_list' });
+    async set_play_list() {
+      this.Set_play_list = await axios({ method: 'post', data: { 'name': this.name_PLL, 'name_user': this.Data_User.username }, url: this.domain_Backend + '/set_play_list' });
       this.Set_play_list = await this.Set_play_list.data;
     },
     async delete_play_list() {
@@ -119,21 +122,35 @@ export const useCounterStore = defineStore('counter', {
       this.Data_Feeling = await this.Data_Feeling.data;
     },
     async Get_Data_User() {
-      this.Data_User = await axios({ method: 'post', data: { 'username': this.username, 'password': this.password }, url: this.domain_Backend + '/login_api' });
-      this.Data_User = await this.Data_User.data;
+      try {
+        this.Data_User = await axios({ method: 'post', data: { 'username': this.username, 'password': this.password }, url: this.domain_Backend + '/login_api' });
+        this.Data_User = await this.Data_User.data;
 
-      this.Show_Table_Login = 1;
+        this.Show_Table_Login = 1;
 
-      this.username = '';
-      this.password = '';
+        this.username = '';
+        this.password = '';
+      }
+      catch (error) {
+        this.Show_bang_DNTC = 2;
+      }
     },
     async Set_Data_User() {
-      this.Set_User = await axios({ method: 'post', data: { 'username_dk': this.username_dk, 'password_dk': this.password_dk, 'email_dk': this.email_dk }, url: this.domain_Backend + '/sign_api' });
-      this.Set_User = await this.Set_User.data;
+      try {
+        this.Set_User = await axios({ method: 'post', data: { 'username_dk': this.username_dk, 'password_dk': this.password_dk, 'email_dk': this.email_dk }, url: this.domain_Backend + '/sign_api' });
+        this.Set_User = await this.Set_User.data;
 
-      this.username_dk = '';
-      this.password_dk = '';
-      this.email_dk = '';
+        this.username_dk = '';
+        this.password_dk = '';
+        this.email_dk = '';
+
+        // if (this.Set_User['Signup information'] == 'Signup in successfully !') {
+        this.Show_bang_DKTC.tc = 1;
+        // }
+      }
+      catch (error) {
+        this.Show_bang_DKTC.tc = 2;
+      }
     },
     async add_song_love(name, artist, duration, poster, mp3_file, id_Song, User_Link) {
       this.Set_song_love = await axios({ method: 'post', data: { 'name': name, 'artist': artist, 'duration': duration, 'poster': poster, 'mp3_file': mp3_file, 'id_Song': id_Song, 'User_Link': User_Link }, url: this.domain_Backend + '/add_song_love' });

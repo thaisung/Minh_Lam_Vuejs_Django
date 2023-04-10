@@ -8,6 +8,13 @@
           </div>
         </div>
         <foo-ter class="fixed w-full bottom-0 z-50" />
+        <!-- Nhap ten PLL -->
+        <div v-if="counter.Show_Table_Login==1&&counter.Show_bang_DT==2" class="flex gap-3 fixed inset-0 mx-auto my-auto rounded text-white text-[18px] font-bold justify-center items-center w-[500px] h-[150px] flex-col bg-gradient-to-b from-sky-500 to-violet-600 px-5 py-5">
+            <h1>Nhập tên Danh sách Phát</h1>
+            <input type="text" v-model="counter.name_PLL" class="flex justify-center items-center rounded text-gray-800 outline-none text-[13px] py-2 text-center w-[450px]" />
+            <button v-on:click="set_play_listt();counter.Show_bang_DT=1" class="bg-sky-600 px-3 py-1 rounded text-[15px]">OK</button>
+        </div>
+        <!-- Dang nhap , dangki -->
         <div v-if="counter.Show_Table_Login==0" class="bg-zinc-900 fixed z-50 inset-0 flex flex-col items-center justify-center">
           <img src="@/assets/transparent_white.png" class="w-[230px] mb-[25px]"/>
           <div class="flex flex-col justify-center items-center   w-[350px] gap-3">
@@ -22,6 +29,7 @@
                 <!-- <h1>Mật khẩu</h1> -->
                 <input placeholder = "Mật khẩu" type="password" class="rounded h-[35px] w-full bg-zinc-700 px-2" v-model="counter.password"/>
               </div>
+              <h1 v-show="counter.Show_bang_DNTC== 2" class="text-red-500 border-[1px] border-red-500 rounded px-2 py-2">Thông tin đăng nhập không hợp lệ !</h1>
               <button v-on:click="counter.Get_Data_User(); counter.get_song_play_list();" class="bg-sky-600  rounded w-full text-gray-200 h-[35px] font-bold mt-5">Đăng nhập</button>
               <!-- <button class="flex justify-center items-center gap-2 border-2 border-sky-600  rounded w-full text-sky-600 font-medium h-[35px] bg-transparent"><img src="@/assets/gg.png" class="w-[25px]"/><h1>Đăng nhập cùng với Google</h1></button> -->
             </div>
@@ -41,11 +49,14 @@
                 <!-- <h1>Mật khẩu</h1> -->
                 <input placeholder = "Mật khẩu" type="password" v-model="counter.password_dk" class="rounded h-[35px] w-full bg-zinc-700 px-2"/>
               </div>
-              <button v-on:click="counter.Set_Data_User();" class="bg-sky-600  rounded w-full text-gray-200 h-[35px] font-bold mt-5">Đăng kí</button>
+              <div v-show="counter.Show_bang_DKTC.tb == 1" class="flex flex-col">
+                  <h1 v-show="counter.Show_bang_DKTC.tc == 1" class="text-lime-500 border-[1px] border-lime-500 rounded px-2 py-2">Đăng kí tài khoản '{{ counter.Set_User.username }}' thành công !</h1>
+                  <h1 v-show="counter.Show_bang_DKTC.tc == 2" class="text-red-500 border-[1px] border-red-500 rounded px-2 py-2">Thông tin đăng kí không hợp lệ !</h1>
+              </div>
+              <button v-on:click="counter.Set_Data_User(); counter.Show_bang_DKTC.tb=1;" class="bg-sky-600  rounded w-full text-gray-200 h-[35px] font-bold mt-5">Đăng kí</button>
             </div>
             <h1 v-on:click="counter.Login_SignUp=2" v-show="counter.Login_SignUp==1" class="text-lime-500 underline font-normal cursor-pointer">Đăng kí tài khoản</h1>
             <h1 v-on:click="counter.Login_SignUp=1" v-show="counter.Login_SignUp==2" class="text-lime-500 underline font-normal cursor-pointer">Đăng nhập tài khoản</h1>
-            <!-- <h1>{{ counter.Show_Table_Login }}</h1> -->
           </div>
         </div>
     </div>
@@ -71,6 +82,13 @@
     const counter = useCounterStore();
     return {counter}
   },
+  methods:{
+        async set_play_listt(){
+            await this.counter.get_song_play_list();
+            await this.counter.set_play_list(this.counter.Get_song_play_list.data.length+1);
+            await this.counter.get_song_play_list();
+        },
+    },
     components: {
       HeaDer,
       FooTer,

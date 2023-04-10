@@ -58,7 +58,7 @@
                     <canvas id="canvas" width="320" height="240" class=""></canvas>
                 </div>
                 <button id="snap" v-on:click="Capture(); counter.F_Search_Feeling(); " class="bg-zinc-600 py-2 rounded w-[150px]">Scan</button>
-                <a href="https://www.youtube.com/" target="blank_" class="flex justify-center items-center cursor-pointer bg-zinc-600 py-2 rounded w-[150px]">Chat Bot</a>
+                <!-- <a href="https://www.youtube.com/" target="blank_" class="flex justify-center items-center cursor-pointer bg-zinc-600 py-2 rounded w-[150px]">Chat Bot</a> -->
             </div>
         </div>
     </div>

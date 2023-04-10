@@ -29,29 +29,37 @@ from knox.auth import AuthToken
 #Thái thêm
 @api_view(['POST'])
 def login_api(request):
-    serializer = AuthTokenSerializer(data=request.data)
-    serializer.is_valid(raise_exception=True)
-    user = serializer.validated_data['user']
-    __,token = AuthToken.objects.create(user)
+    try:
+        serializer = AuthTokenSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        __,token = AuthToken.objects.create(user)
 
 
-    message = {'Login information':'Logged in successfully !','id':user.id,'email':user.email,'username':user.username,'token':token,}
-    return Response(message,status=status.HTTP_200_OK)
+        message = {'Login information':'Logged in successfully !','id':user.id,'email':user.email,'username':user.username,'token':token,}
+        return Response(message,status=status.HTTP_200_OK)
+    except:
+        message = {'Error message': 'Thông tin đăng nhập không chính xác !'}
+        return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
 def sign_api(request):
-    username = request.data['username_dk']
-    password = request.data['password_dk']
-    email = request.data['email_dk']
+    try:
+        username = request.data['username_dk']
+        password = request.data['password_dk']
+        email = request.data['email_dk']
 
-    User.objects.create(email=email,username=username,password=password)
-    data_user = User.objects.get(email=email,username=username)
-    pw = data_user.password
-    data_user.set_password(pw)
-    data_user.save()
+        User.objects.create(email=email,username=username,password=password)
+        data_user = User.objects.get(email=email,username=username)
+        pw = data_user.password
+        data_user.set_password(pw)
+        data_user.save()
 
-    message = {'Signup information':'Signup in successfully !','username':username}
-    return Response(message,status=status.HTTP_200_OK)
+        message = {'Signup information':'Signup in successfully !','username':username}
+        return Response(message,status=status.HTTP_200_OK)
+    except:
+        message = {'Error message': 'Thông tin đăng kí không chính xác !'}
+        return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['POST'])

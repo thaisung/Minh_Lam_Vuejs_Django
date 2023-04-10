@@ -50,6 +50,7 @@
                 <div v-on:click="counter.add_song_play_list(i.name, i.artist, i.duration, i.poster, i.mp3_file, i.id,counter.show_bang_DSP); " clclass="w-[20%]"><button class=" px-3 py-1 rounded-full font-bold border-[1px] border-gray-200">Add</button></div>
             </div>
         </div>
+        <!-- bang nhap ten -->
     </div>
 </template>
 

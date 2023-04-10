@@ -26,11 +26,14 @@
                     <svg role="img" height="24" width="24" aria-hidden="true" class="Svg-sc-ytk21e-0 uPxdw collection-icon fill-gray-300" viewBox="0 0 24 24" data-encore-id="icon"><path d="M14.5 2.134a1 1 0 0 1 1 0l6 3.464a1 1 0 0 1 .5.866V21a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1V3a1 1 0 0 1 .5-.866zM16 4.732V20h4V7.041l-4-2.309zM3 22a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1zm6 0a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1z"></path></svg>
                     <h1 :class="{'text-white':counter.Path_Route.path=='/MyLibary'}" class="text-[13px] ml-2 text-gray-300 font-medium">Thư viện của tôi</h1>
                 </router-link>
+                <!-- <div  class="flex items-center gap-2 hover:ml-2 hover:text-yellow-500 cursor-pointer duration-100" -->
+                <a href="https://www.youtube.com/" target="blank_" class="flex text-[19px] text-gray-300 font-medium items-center  hover:ml-2  cursor-pointer duration-100 gap-4"><font-awesome-icon icon="fa-solid fa-robot" /><h1 class="text-[13px]">Chat Bot</h1></a>
+                <!-- </div> -->
             </div>
         </div>
         <div class="flex flex-col px-4 py-4  justify-between w-full font-bold ">
             <div class="flex flex-col text-slate-100 px-3 mt-2 gap-4 text-[19px]">
-                <router-link to="/Play-list" v-on:click="set_play_listt();" class="flex  items-center gap-2 hover:ml-2 hover:text-yellow-500 cursor-pointer duration-100"  v-bind:class="{'text-yellow-500':counter. Path_Route.path=='/SeaFood'}">
+                <router-link to="/Play-list" v-on:click=" counter.Show_bang_DT=2" class="flex  items-center gap-2 hover:ml-2 hover:text-yellow-500 cursor-pointer duration-100"  v-bind:class="{'text-yellow-500':counter. Path_Route.path=='/SeaFood'}">
                     <div  class="flex items-center justify-center bg-gray-300 rounded-[2px] h-[24px] w-[24px]"><svg role="img" height="12" width="12" aria-hidden="true" viewBox="0 0 16 16" data-encore-id="icon" class="Svg-sc-ytk21e-0 uPxdw"><path d="M15.25 8a.75.75 0 0 1-.75.75H8.75v5.75a.75.75 0 0 1-1.5 0V8.75H1.5a.75.75 0 0 1 0-1.5h5.75V1.5a.75.75 0 0 1 1.5 0v5.75h5.75a.75.75 0 0 1 .75.75z"></path></svg></div>
                     <h1 :class="{'text-white':counter.Path_Route.path=='/Play-list'}"  class="text-[13px] ml-2 text-gray-300 font-medium">Tạo Danh sách Phát</h1>
                 </router-link>
@@ -42,7 +45,7 @@
         </div>
         <div class="flex flex-col  justify-center">
             <div class="flex pr-5" v-for="(i,index) in counter.Get_song_play_list.data">
-                <div v-on:click="counter.show_bang_DSP=i.id; counter.show_bang_DSPN=index; counter.name_show_bang_DSPN=i.id; counter.Show_deletete=0"  v-on:contextmenu.prevent="counter.Show_delete=i.id; counter. name_delete_play_list=i.id;" :class="{'text-white':counter.show_bang_DSP==i.id}" class="text-gray-300 text-[13px] px-4 py-2 ml-2  justify-between w-full font-medium cursor-pointer">Danh sách Phát #{{ i.name }}</div>
+                <div v-on:click="counter.show_bang_DSP=i.id; counter.show_bang_DSPN=index; counter.name_show_bang_DSPN=i.id; counter.Show_deletete=0"  v-on:contextmenu.prevent="counter.Show_delete=i.id; counter. name_delete_play_list=i.id;" :class="{'text-white':counter.show_bang_DSP==i.id}" class="text-gray-300 text-[13px] px-4 py-2 ml-2  justify-between w-full font-medium cursor-pointer">Danh sách Phát # {{ i.name }}</div>
                 <div v-show="counter.Show_delete==i.id" v-on:click="delete_listt(); " class="bg-gray-900 rounded px-3 py-1 w-[100px] h-[30px] text-gray-100 text-[13px] cursor-pointer  ">Xóa</div>
             </div>
         </div>

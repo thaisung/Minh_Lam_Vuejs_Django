@@ -29,7 +29,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 /* import specific icons */
 import {
     faMagnifyingGlass, faChevronDown, faBarsStaggered, faXmark, faChevronRight, faChevronLeft, faCircle, faC, faCartShopping, faCircleRight, faCircleUser, faUserLarge, faClockRotateLeft, faCreditCard, faUser, faComment, faSquarePhone, faCircleInfo,
-    faWineGlass, faShrimp, faFishFins, faNetworkWired, faCookie, faStroopwafel, faCirclePlus, faCircleMinus, faFileCirclePlus, faCaretDown, faCaretUp, faCircleCheck, faListUl, faFileLines, faRightToBracket, faEllipsis,
+    faWineGlass, faShrimp, faFishFins, faNetworkWired, faCookie, faStroopwafel, faCirclePlus, faCircleMinus, faFileCirclePlus, faCaretDown, faCaretUp, faCircleCheck, faListUl, faFileLines, faRightToBracket, faEllipsis, faRobot,
 } from '@fortawesome/free-solid-svg-icons';
 
 import { faFacebook, faSquareFacebook, faTelegram, faTiktok, faPython, faJava, faPhp, faJs, faHtml5, faCss3, } from '@fortawesome/free-brands-svg-icons'
@@ -40,7 +40,7 @@ import { faMoon, faSun, faIdCard, faHandPointDown } from '@fortawesome/free-regu
 library.add(
     faMagnifyingGlass, faFacebook, faMoon, faSun, faChevronDown, faSquareFacebook, faTelegram, faTiktok, faBarsStaggered, faXmark, faChevronRight, faChevronLeft, faCircle, faPython, faJava, faPhp, faJs, faHtml5, faCss3, faC, faCartShopping, faCircleRight,
     faCircleUser, faUserLarge, faClockRotateLeft, faCreditCard, faUser, faComment, faIdCard, faSquarePhone, faCircleInfo, faWineGlass, faShrimp, faFishFins, faNetworkWired, faCookie, faStroopwafel, faCirclePlus, faCircleMinus, faFileCirclePlus, faCaretDown, faCaretUp,
-    faCircleCheck, faListUl, faFileLines, faHandPointDown, faRightToBracket, faEllipsis,
+    faCircleCheck, faListUl, faFileLines, faHandPointDown, faRightToBracket, faEllipsis, faRobot,
 
 )
 
